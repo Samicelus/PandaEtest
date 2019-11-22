@@ -1,0 +1,5 @@
+{
+  "port": 8080,
+  "swagger_host": "127.0.0.1:8933",
+  "white_list_api": []
+}
