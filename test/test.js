@@ -40,6 +40,36 @@ describe('仓库api测试', function() {
       .end(done);
   });
 
+  it("包裹录入时缺少关键信息", function(done){
+    request(server)
+      .post("/api/v1/messages")
+      .send({
+        relativeStaffOfCustomer:{
+          name: "A"
+        },
+        relativeCustomer:{
+            username: "B",
+            name: "B"
+          },
+        updatedBy:{
+          username: "C",
+          name: "C"
+        },
+        targetObjectType: "Parcel",
+        actionType: "Receive",
+        object: [
+          {
+            orderid: "111"
+          },
+          {
+            orderid: "112"
+          }
+        ]
+      })
+      .expect(400)
+      .end(done);
+  });
+
   it("查询包裹测试", function(done)
     {
       var now = new Date();
